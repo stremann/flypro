@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flypro</title>
+    <script src="https://npmcdn.com/flypro@latest/dist/flypro.min.js"></script>
+</head>
+<body>
+    <div>
+        Clicked: <span class="display">0</span> times
+        <button class="increment">+</button>
+        <button class="decrement">-</button>
+    </div>
+    <script>
+        function counter(state, command) {
+            if (typeof state === 'undefined') {
+                return 0
+            }
+            switch (command.type) {
+                case 'INCREMENT_COUNTER':
+                    return state + 1;
+                case 'DECREMENT_COUNTER':
+                    return state - 1;
+                default:
+                    return state
+            }
+        }
+        var store = Flypro.createStore(counter);
+        var display = document.querySelector('.display');
+        function render() {
+            display.innerHTML = store.getState().toString()
+        }
+        render();
+        store.subscribe(render);
+        document.querySelector('.increment').addEventListener('click', function () {
+            store.send({type: 'INCREMENT_COUNTER'})
+        });
+        document.querySelector('.decrement').addEventListener('click', function () {
+            store.send({type: 'DECREMENT_COUNTER'})
+        });
+    </script>
+</body>
+</html>
