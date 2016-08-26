@@ -1,2 +1,11 @@
 # Intellij Idea project files
 .idea
+
+# Nodejs installed packages
+node_modules
+
+# Nodejs log file
+npm-debug.log
+
+# Generated build folder
+dist
