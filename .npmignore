@@ -1,1 +1,5 @@
+# Build config
 webpack.config.js
+
+# Examples directory
+examples
