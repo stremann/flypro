@@ -1,3 +1,6 @@
+# Intellij Idea project files
+.idea
+
 # Build config
 webpack.config.js
 
