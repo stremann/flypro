@@ -15,7 +15,7 @@
   "author": "Roman Stremedlovskyi <stremann@yahoo.com> (https://github.com/stremann)",
   "license": "MIT",
   "dependencies": {
-    "flypro": "^0.4.1",
+    "flypro": "^0.4.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
   },
