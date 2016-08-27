@@ -1,0 +1,32 @@
+{
+  "name": "counter-react-flypro",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Counter React with Flypro",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "counter",
+    "react",
+    "flypro",
+    "react-flypro"
+  ],
+  "author": "Roman Stremedlovskyi <stremann@yahoo.com> (https://github.com/stremann)",
+  "license": "MIT",
+  "dependencies": {
+    "flypro": "^0.4.2",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-flypro": "^0.1.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "cross-env": "^2.0.0",
+    "webpack": "^1.13.2"
+  }
+}
