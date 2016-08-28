@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vanilla + Flypro</title>
+    <title>Pure + Flypro</title>
     <script src="https://npmcdn.com/flypro@latest/dist/flypro.min.js"></script>
 </head>
 <body>
@@ -17,9 +17,9 @@
                 return 0
             }
             switch (command.type) {
-                case 'INCREMENT_COUNTER':
+                case 'INCREMENT':
                     return state + 1;
-                case 'DECREMENT_COUNTER':
+                case 'DECREMENT':
                     return state - 1;
                 default:
                     return state
@@ -33,10 +33,10 @@
         render();
         store.subscribe(render);
         document.querySelector('.increment').addEventListener('click', function () {
-            store.send({type: 'INCREMENT_COUNTER'})
+            store.send({type: 'INCREMENT'})
         });
         document.querySelector('.decrement').addEventListener('click', function () {
-            store.send({type: 'DECREMENT_COUNTER'})
+            store.send({type: 'DECREMENT'})
         });
     </script>
 </body>
