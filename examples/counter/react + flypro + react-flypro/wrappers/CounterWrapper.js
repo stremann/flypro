@@ -1,4 +1,4 @@
-import { wrap } from 'react-flypro';
+import wrap from 'react-flypro';
 
 import * as commands from '../commands/CounterCommand';
 import Counter from '../components/CounterComponent';
