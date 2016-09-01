@@ -7,5 +7,14 @@ webpack.config.js
 # Compiler config
 .babelrc
 
+# Linter config
+.eslintrc.js
+
+# CI config
+.travis.yml
+
+# Test source
+test
+
 # Examples directory
 examples
