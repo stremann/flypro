@@ -14,6 +14,7 @@
     "pretest": "rimraf coverage",
     "test": "mocha --compilers js:babel-register --recursive",
     "check:src": "npm run test",
+    "coverage": "cat coverage/lcov.info | coveralls",
     "prepublish": "npm run clean && npm run check:src && npm run build"
   },
   "repository": {
@@ -46,6 +47,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
     "chai": "^3.5.0",
+    "coveralls": "^2.11.12",
     "cross-env": "^2.0.0",
     "mocha": "^3.0.2",
     "nyc": "^8.1.0",

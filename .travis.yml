@@ -8,6 +8,9 @@ git:
 script:
   - npm run check:src
   - npm run build
+after_success:
+  - npm run test:coverage
+  - npm run coverage
 branches:
   only:
     - master
