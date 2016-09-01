@@ -1,7 +1,7 @@
-export function createStore(handler, state) {
-    var currentHandler = handler;
-    var currentState = state;
-    var listeners = [];
+export default function createStore(handler, state) {
+    const currentHandler = handler;
+    let currentState = state;
+    const listeners = [];
 
     function getState() {
         return currentState;
@@ -25,7 +25,7 @@ export function createStore(handler, state) {
         return command;
     }
 
-    send({type: 'INIT_FLYPRO'});
+    send({ type: 'INIT_FLYPRO' });
 
-    return {send, subscribe, getState, getListeners};
+    return { send, subscribe, getState, getListeners };
 }

@@ -2,7 +2,7 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 
-import { createStore } from '../../src/';
+import createStore from '../../src/';
 
 chai.use(sinonChai);
 
@@ -13,7 +13,7 @@ describe('Create store', () => {
     let mockListener;
 
     beforeEach(() => {
-        mockHandler = (state, command) => command.type == 'TEST_FLYPRO' ? 'newState' : state;
+        mockHandler = (state, command) => command.type === 'TEST_FLYPRO' ? 'newState' : state;
         mockState = () => 'mockState';
         mockStore = createStore(mockHandler, mockState);
         mockListener = sinon.stub();
@@ -25,7 +25,7 @@ describe('Create store', () => {
             subscribe: mockStore.subscribe,
             getState: mockStore.getState,
             getListeners: mockStore.getListeners
-        })
+        });
     });
 
     it('should always retrieve relevant state', () => {
@@ -48,13 +48,13 @@ describe('Create store', () => {
     });
 
     it('should change current state when sending a command', () => {
-        mockStore.send({type: 'TEST_FLYPRO'});
+        mockStore.send({ type: 'TEST_FLYPRO' });
         expect(mockStore.getState()).to.equal('newState');
     });
 
     it('should invoke listener when sending a command', () => {
         mockStore.subscribe(mockListener);
-        mockStore.send({type: 'TEST_FLYPRO'});
-        expect(mockListener).calledWith()
+        mockStore.send({ type: 'TEST_FLYPRO' });
+        expect(mockListener).calledWith();
     });
 });
