@@ -7,6 +7,10 @@ export function createStore(handler, state) {
         return currentState;
     }
 
+    function getListeners() {
+        return listeners;
+    }
+
     function subscribe(listener) {
         listeners.push(listener);
 
@@ -23,5 +27,5 @@ export function createStore(handler, state) {
 
     send({type: 'INIT_FLYPRO'});
 
-    return {send, subscribe, getState};
+    return {send, subscribe, getState, getListeners};
 }

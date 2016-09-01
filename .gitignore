@@ -7,6 +7,10 @@ node_modules
 # Nodejs log file
 npm-debug.log
 
-# Generated build folder
+# Build artifacts
 dist
 lib
+
+# Test artifacts
+.nyc_output
+coverage
