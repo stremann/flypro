@@ -25,7 +25,7 @@
                     return state
             }
         }
-        var store = Flypro.createStore(counter);
+        var store = Flypro.default(counter);
         var display = document.querySelector('.display');
         function render() {
             display.innerHTML = store.getState().toString()

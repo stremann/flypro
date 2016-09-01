@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'flypro';
+import createStore from 'flypro';
+
 import Counter from './wrappers/CounterWrapper';
 import counter from './handlers/CounterHandler';
 
