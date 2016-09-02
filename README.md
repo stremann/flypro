@@ -119,7 +119,7 @@ This is exactly like there is just one root component in a React app, but it is 
 
 * Counter Vanilla ([source](https://github.com/stremann/flypro/tree/master/examples/counter/pure%2Bflypro))
 * Counter + Flypro ([source](https://github.com/stremann/flypro/tree/master/examples/counter/react%2Bflypro))
-* Counter + Flypro + React Flypro ([source](https://github.com/stremann/flypro/tree/master/examples/counter/react%2Bflypro%2Breact-flypro))
+* Counter + Flypro + React Flypro ([source](https://github.com/stremann/react-flypro/tree/master/examples/counter/react%2Bflypro%2Breact-flypro))
 
 ### Change Log
 
