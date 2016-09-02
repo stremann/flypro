@@ -47,7 +47,30 @@ npm install --save react-flypro
 
 Note that unlike Flypro itself, packages in the Flypro ecosystem don't provide UMD builds, so it is recommended using CommonJS module bundlers like [Webpack](http://webpack.github.io) and [Browserify](http://browserify.org/) for the most comfortable development experience.
 
-### The Gist
+### API
+
+#### `createStore(handler, [initialState])`
+
+Creates a Flypro store that holds the complete state tree of your app. There should only be a single store in your app.
+
+##### Arguments
+
+1. `handler`: a function that returns the next state tree, given the current state tree and command to handle.
+
+2. [`initialState`]: the initial state, the shape of the state could be a primitive, an array, an object. You may optionally specify it to hydrate the state from the server in universal apps, or to restore a previously serialized user session.
+
+##### Returns
+
+- `store`: an object with a few methods on it that holds the complete state of your app. The only way to change the state inside it is to send a command on it.
+
+#### Store Methods
+
+- `getState()`: returns the current state tree of your application.
+- `send(command)`: sends a command. This is the only way to do a state change. `command` is a plain object describing the change that makes sense for your application. Commands are the only way to get data into the store. Check out [Flux Standard](https://github.com/acdlite/flux-standard-action) for recommendations on how commands could be constructed.  
+- `subscribe(listener)`: adds a change listener. It will be called any time a command is sent, and some part of the state tree may potentially have changed. It is a low-level API. Most likely, instead of using it directly, you'll use React (e.g. React Flypro or other) bindings.  To unsubscribe the change listener, invoke the function returned by `subscribe`. `listener` callback is a function will be invoked any time a command has been sent, and the state tree might have changed.
+- `getListeners()`: returns the current array of liteners subscribed to the store of your application.
+
+### Gist
 
 The whole state of your app is stored in an object tree inside a single *store*.  
 The only way to change the state tree is to send a *command*, an object describing what happened.  
@@ -58,39 +81,30 @@ That's it!
 ```js
 import createStore from 'flypro';
 
-/**
- * This is a handler, pure function with (state, command) => state signature.
- * It describes how command transforms the state into the next state.
- */
+// This is a handler, pure function with (state, command) => state signature.
+// It describes how command transforms the state into the next state.
 function counter(state = 0, command) {
-  switch (command.type) {
-  case 'INCREMENT':
-    return state + 1
-  case 'DECREMENT':
-    return state - 1
-  default:
-    return state
-  }
+    switch (command.type) {
+        case 'INCREMENT':
+            return state + 1;
+        case 'DECREMENT':
+            return state - 1;
+        default:
+            return state;
+    }
 }
 
 // Create a Flypro store holding the state of your app.
-// Its API is { subscribe, send, getState, getListeners }.
-let store = createStore(counter)
+let store = createStore(counter);
 
 // You can use subscribe() to update the UI in response to state changes.
 // Normally you'd use a view binding library (e.g. React Flypro) rather than subscribe() directly.
+store.subscribe(() => console.log(store.getState()));
 
-store.subscribe(() =>
-  console.log(store.getState())
-)
-
-// The only way to mutate the internal state is to send an command.
-store.send({ type: 'INCREMENT' })
-// 1
-store.send({ type: 'INCREMENT' })
-// 2
-store.send({ type: 'DECREMENT' })
-// 1
+// The only way to change the internal state is to send an command.
+store.send({ type: 'INCREMENT' }); // 1
+store.send({ type: 'INCREMENT' }); // 2
+store.send({ type: 'DECREMENT' }); // 1
 ```
 
 Instead of mutating the state directly, you specify the mutations you want to happen with plain objects called *commands*. 
