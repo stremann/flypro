@@ -1,6 +1,6 @@
 {
   "name": "flypro",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "description": "Flypro",
   "main": "lib/index.js",
   "scripts": {
